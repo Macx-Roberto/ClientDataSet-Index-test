@@ -13,19 +13,19 @@ Ao iniciar o programa gera 1 milhao de registros na clientdataset.
 - Alterar o filtro com index ativado demora mais tempo do que sem ele onde de 100ms vai para mais de 400ms.
  
 Observação:
-- Codigo comentado era um teste com index em campo string.
+- Codigo comentado no projeto era um teste com index em campo string.
 - Nem tudo que se faz com o filter é possivel com o SetRange.
 - Sobre os campos do Index:
--- Ex: dado um index de 2 campos
+  - Para utilziar os campo nestas rotinas é obrigatorio que os mesmos estajam no index do componente 
+caso vc utilize um campo que não esta no index vai obter um erro como "index out of range".
+  - O contrario pode ser feito. Ex: dado um index de 2 campos:
 ```
 ClientDataSet1.SetRange([89], [89]); // isso funciona (utilziar somente um). 
                                     // Somente o primeiro campo presente no index é utilziado
 
 ClientDataSet1.SetRange([nil, 89], [nil, 89]); ou ...SetRange([NULL, 89], [NULL, 89]);
 // isso não vai trazer os que respeitam somente o segundo campo.
-
-// teria como fazer?
-// SIM 
+// teria como fazer? SIM 
 // Ex:
 ClientDataSet1.SetRange([<fistValue>, 89], [<lastValue>, 89]); 
 // o primeiro campo abrangendo todos os registros e o segundo somente os com valor 89
